@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noble — Приватность и безопасность</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE (полностью скопировано с лендинга) ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --dark: #111111;
+            --red: #e63946;
+            --red-dark: #b71c1c;
+            --red-glow: rgba(230, 57, 70, 0.6);
+            --red-glow-soft: rgba(230, 57, 70, 0.25);
+            --glass-bg: rgba(20, 20, 20, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --glass-shadow: rgba(0, 0, 0, 0.7);
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --text-muted: #777;
+            --radius-xl: 32px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== GRADIENT BACKGROUND ===== */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 20% 20%, rgba(180, 20, 30, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(200, 30, 40, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(150, 10, 20, 0.04) 0%, transparent 50%),
+                var(--black);
+            pointer-events: none;
+        }
+
+        /* ===== GLASS MIXIN ===== */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px) saturate(1.2);
+            -webkit-backdrop-filter: blur(18px) saturate(1.2);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 40px var(--glass-shadow);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HEADER (копия) ===== */
+        .header {
+            margin-top: 20px;
+            padding: 12px 24px;
+            border-radius: var(--radius-xl);
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px) saturate(1.2);
+            -webkit-backdrop-filter: blur(18px) saturate(1.2);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 40px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            transition: all var(--transition);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-img {
+            height: 44px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 0 12px var(--red-glow-soft));
+            transition: filter var(--transition);
+        }
+
+        .logo-img:hover {
+            filter: drop-shadow(0 0 24px var(--red-glow));
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 30%, #e63946 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .header-nav a {
+            font-size: 15px;
+            font-weight: 450;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: color var(--transition), text-shadow var(--transition);
+            position: relative;
+        }
+
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+
+        .header-nav a:hover {
+            color: #fff;
+        }
+
+        .header-nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-nav a.download-btn {
+            background: linear-gradient(135deg, var(--red-dark), var(--red));
+            color: #fff;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.25);
+        }
+
+        .header-nav a.download-btn::after {
+            display: none;
+        }
+
+        .header-nav a.download-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 32px rgba(230, 57, 70, 0.4);
+        }
+
+        .header-nav a.active {
+            color: #fff;
+            font-weight: 500;
+        }
+        .header-nav a.active::after {
+            width: 100%;
+            background: var(--red);
+        }
+
+        /* ===== PRIVACY CONTENT ===== */
+        .privacy-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            text-align: center;
+            margin: 40px 0 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .privacy-title .red {
+            color: var(--red);
+        }
+
+        .privacy-intro {
+            max-width: 820px;
+            margin: 0 auto 50px;
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .privacy-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px) saturate(1.2);
+            -webkit-backdrop-filter: blur(14px) saturate(1.2);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 32px 36px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px var(--glass-shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .privacy-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        .privacy-section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .privacy-section-header svg {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            stroke: var(--red);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 12px var(--red-glow-soft));
+        }
+
+        .privacy-section-header h2 {
+            font-size: clamp(24px, 2.8vw, 34px);
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .privacy-section p {
+            color: var(--text-secondary);
+            font-size: 17px;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .privacy-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .privacy-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 16px;
+        }
+
+        .privacy-section ul li {
+            color: var(--text-secondary);
+            font-size: 17px;
+            line-height: 1.8;
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .privacy-section ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-size: 20px;
+        }
+
+        .privacy-section strong {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .privacy-section .highlight-red {
+            color: var(--red);
+            font-weight: 500;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 40px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: center;
+        }
+
+        .footer .logo-text-sm {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 30%, #e63946 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .footer p {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .footer .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color var(--transition);
+        }
+
+        .footer .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 16px;
+                border-radius: var(--radius-lg);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .header-left {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .logo-img {
+                height: 36px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .header-nav {
+                justify-content: center;
+                gap: 16px;
+                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.04);
+            }
+
+            .header-nav a {
+                font-size: 14px;
+            }
+
+            .header-nav a.download-btn {
+                padding: 6px 18px;
+                font-size: 13px;
+            }
+
+            .privacy-section {
+                padding: 20px 18px;
+            }
+
+            .privacy-section-header h2 {
+                font-size: 22px;
+            }
+
+            .privacy-section-header svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .privacy-section p,
+            .privacy-section ul li {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .privacy-title {
+                font-size: 28px;
+                margin-top: 30px;
+            }
+
+            .privacy-intro {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .footer .logo-text-sm {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-nav {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .header-nav a {
+                font-size: 13px;
+            }
+
+            .header-nav a.download-btn {
+                padding: 5px 14px;
+                font-size: 12px;
+            }
+
+            .privacy-section {
+                padding: 16px 14px;
+            }
+
+            .privacy-section-header h2 {
+                font-size: 20px;
+            }
+
+            .privacy-section p,
+            .privacy-section ul li {
+                font-size: 15px;
+            }
+
+            .footer .footer-links {
+                gap: 16px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.7s ease forwards;
+        }
+
+        .fade-in-d1 {
+            animation-delay: 0.1s;
+        }
+        .fade-in-d2 {
+            animation-delay: 0.2s;
+        }
+        .fade-in-d3 {
+            animation-delay: 0.3s;
+        }
+        .fade-in-d4 {
+            animation-delay: 0.4s;
+        }
+        .fade-in-d5 {
+            animation-delay: 0.5s;
+        }
+        .fade-in-d6 {
+            animation-delay: 0.6s;
+        }
+        .fade-in-d7 {
+            animation-delay: 0.7s;
+        }
+        .fade-in-d8 {
+            animation-delay: 0.8s;
+        }
+        .fade-in-d9 {
+            animation-delay: 0.9s;
+        }
+        .fade-in-d10 {
+            animation-delay: 1.0s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== BACKGROUND ===== -->
+    <div class="bg-gradient"></div>
+
+    <!-- ===== MAIN ===== -->
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header glass fade-in fade-in-d1">
+            <div class="header-left">
+                <a href="index.html" class="logo-wrapper">
+                    <img src="Logo.png" alt="Noble Logo" class="logo-img" />
+                    <span class="logo-text">Noble</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="Privary.html" class="active">Приватность</a>
+                <a href="Danloawd.html" class="download-btn">Скачать Приложение</a>
+            </nav>
+        </header>
+
+        <!-- ===== PRIVACY CONTENT ===== -->
+        <h1 class="privacy-title fade-in fade-in-d2">
+            Приватность и <span class="red">безопасность</span>
+        </h1>
+        <p class="privacy-intro fade-in fade-in-d3">
+            В мире, где цифровая конфиденциальность становится роскошью, мы строим Noble как крепость для ваших данных.
+            Ниже — подробный разбор наших принципов, технологий и обязательств.
+        </p>
+
+        <!-- Раздел 1: Философия -->
+        <div class="privacy-section glass fade-in fade-in-d4">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polyline points="9 12 11 14 15 10" />
+                </svg>
+                <h2>Наша философия приватности</h2>
+            </div>
+            <p>
+                <strong>Приватность — это не опция, а фундаментальное право.</strong> Мы считаем, что каждый человек имеет право на личное пространство, свободное от слежки, анализа и коммерциализации данных. В Noble мы не собираем, не храним и не передаём ваши личные данные третьим лицам. Никакой «большой брат», никакой скрытой телеметрии.
+            </p>
+            <p>
+                Наша миссия — дать вам инструмент для общения, который не требует жертвовать конфиденциальностью. Мы не зарабатываем на ваших данных, не показываем таргетированную рекламу и не продаём поведенческие профили. Единственная валюта, которую мы принимаем, — это ваше доверие, и мы делаем всё, чтобы его оправдать.
+            </p>
+            <p>
+                Мы также выступаем за <span class="highlight-red">прозрачность</span>: все наши алгоритмы, протоколы и политики открыты для аудита. Мы публикуем технические документы, приглашаем независимых экспертов и готовы отвечать на любые вопросы о том, как работаем. Приватность — это не просто слово, это наш образ действий.
+            </p>
+        </div>
+
+        <!-- Раздел 2: Сквозное шифрование -->
+        <div class="privacy-section glass fade-in fade-in-d5">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    <circle cx="12" cy="16" r="1.5" />
+                    <path d="M12 16v-2" />
+                </svg>
+                <h2>Сквозное шифрование (End‑to‑End)</h2>
+            </div>
+            <p>
+                <strong>Все сообщения, файлы, медиа и звонки в Noble защищены сквозным шифрованием.</strong> Это означает, что данные шифруются на вашем устройстве и расшифровываются только на устройстве получателя. Никто — ни мы, ни интернет-провайдеры, ни правительственные органы — не может прочитать ваши переписки или прослушать разговоры.
+            </p>
+            <p>
+                Мы используем проверенный протокол на основе <span class="highlight-red">Double Ratchet</span> (двойной храповик), который обеспечивает совершенную прямую секретность (Perfect Forward Secrecy). Даже если долговременный ключ будет скомпрометирован, прошлые сообщения останутся зашифрованными. Каждое сообщение получает уникальный ключ, который не повторяется.
+            </p>
+            <p>
+                Кроме того, мы внедряем <strong>дополнительные механизмы</strong>: подтверждение ключей через QR-код или короткие строки, чтобы вы могли убедиться, что общаетесь именно с тем, с кем нужно, и никто не вмешивается в соединение. В ближайших обновлениях появится функция «секретных чатов» с автоматическим уничтожением сообщений и защитой от скриншотов.
+            </p>
+        </div>
+
+        <!-- Раздел 3: Собственный протокол Veltrix-ETE -->
+        <div class="privacy-section glass fade-in fade-in-d6">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                </svg>
+                <h2>Veltrix‑ETE: наш гибридный протокол</h2>
+            </div>
+            <p>
+                Помимо стандартного E2E, мы разрабатываем собственный протокол <strong>Veltrix‑ETE</strong>, который объединяет лучшие черты <span class="highlight-red">MTProto</span> (используется в Telegram) и наши уникальные инновации. Veltrix‑ETE находится в стадии тестирования и будет включён в качестве опционального режима для пользователей, которым требуется максимальная защита.
+            </p>
+            <p>
+                Что делает Veltrix‑ETE особенным?
+                <ul>
+                    <li><strong>Постквантовая устойчивость</strong> — добавлены алгоритмы, устойчивые к атакам квантовых компьютеров (CRYSTALS‑Kyber и другие).</li>
+                    <li><strong>Динамическая маршрутизация</strong> — пакеты передаются через несколько независимых серверов, что затрудняет отслеживание трафика.</li>
+                    <li><strong>Смешанное шифрование</strong> — комбинирует симметричные и асимметричные методы с регулярной сменой ключей.</li>
+                    <li><strong>Анонимизация метаданных</strong> — скрываются не только содержимое, но и информация о времени, размере и частоте сообщений.</li>
+                </ul>
+            </p>
+            <p>
+                Мы приглашаем исследователей безопасности к анализу нашего протокола. Все спецификации будут опубликованы до официального релиза, чтобы каждый мог убедиться в надёжности системы.
+            </p>
+        </div>
+
+        <!-- Раздел 4: Хранение и обработка данных -->
+        <div class="privacy-section glass fade-in fade-in-d7">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 12h-4l-3 9-4-18-3 9H2" />
+                </svg>
+                <h2>Хранение данных и минимализм</h2>
+            </div>
+            <p>
+                <strong>Мы придерживаемся принципа «минимального сбора».</strong> В Noble мы не храним ваши сообщения на серверах дольше, чем необходимо для доставки. Все данные, включая метаданные, автоматически удаляются после подтверждения получения. Исключение — если вы явно включите облачное резервное копирование, но даже в этом случае данные будут зашифрованы ключом, который известен только вам.
+            </p>
+            <p>
+                Мы не сохраняем IP-адреса, не ведём журналы посещений и не анализируем ваше поведение. Единственная информация, которая остаётся — это анонимный идентификатор аккаунта, необходимый для работы сервиса. Вы можете в любой момент запросить полное удаление всех своих данных, и мы выполним это в течение 24 часов.
+            </p>
+            <p>
+                Наши серверы расположены в нескольких юрисдикциях, каждая из которых имеет строгие законы о защите данных. Мы не передаём данные третьим сторонам, даже если это требуется по закону, если только не получим официальное постановление суда, и даже тогда мы будем оспаривать его в рамках наших возможностей.
+            </p>
+        </div>
+
+        <!-- Раздел 5: Прозрачность и аудит -->
+        <div class="privacy-section glass fade-in fade-in-d8">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+                <h2>Прозрачность и независимый аудит</h2>
+            </div>
+            <p>
+                Мы верим, что доверие строится на открытости. Поэтому мы регулярно публикуем <strong>отчёты о прозрачности</strong>, в которых раскрываем количество запросов от государственных органов, технические инциденты и результаты внутренних проверок. Все наши клиентские приложения (iOS, Android, Desktop) являются открытым исходным кодом — вы можете проверить, что код делает именно то, что мы обещаем.
+            </p>
+            <p>
+                Мы приглашаем авторитетные аудиторские компании (например, Cure53, Trail of Bits) для проведения независимых проверок нашей инфраструктуры и протоколов. Результаты каждого аудита публикуются в открытом доступе. Кроме того, мы запускаем программу <span class="highlight-red">bug bounty</span>, чтобы поощрять исследователей безопасности за нахождение уязвимостей.
+            </p>
+            <p>
+                Наша цель — стать эталоном в области приватности, и мы готовы доказывать это делом, а не словами. Если вы обнаружите проблему — сообщите нам, и мы решим её в приоритетном порядке.
+            </p>
+        </div>
+
+        <!-- Раздел 6: Защита от киберугроз -->
+        <div class="privacy-section glass fade-in fade-in-d9">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="M12 8v4" />
+                    <circle cx="12" cy="16" r="1" />
+                </svg>
+                <h2>Многоуровневая защита от киберугроз</h2>
+            </div>
+            <p>
+                Безопасность — это не только шифрование. Мы внедряем комплексную систему защиты на всех уровнях:
+                <ul>
+                    <li><strong>Защита от фишинга</strong> — автоматическое распознавание подозрительных ссылок и предупреждение пользователей.</li>
+                    <li><strong>Блокировка несанкционированного доступа</strong> — двухфакторная аутентификация, биометрическая проверка и временные одноразовые пароли.</li>
+                    <li><strong>Мониторинг аномалий</strong> — системы машинного обучения отслеживают необычную активность и блокируют подозрительные сессии.</li>
+                    <li><strong>Регулярное обновление протоколов</strong> — мы оперативно реагируем на новые уязвимости и выпускаем патчи.</li>
+                </ul>
+            </p>
+            <p>
+                Кроме того, мы тесно сотрудничаем с сообществом специалистов по безопасности, чтобы оставаться на шаг впереди злоумышленников. Ваша безопасность — это непрерывный процесс, и мы инвестируем все ресурсы в его совершенствование.
+            </p>
+        </div>
+
+        <!-- Раздел 7: Ваши права и контроль -->
+        <div class="privacy-section glass fade-in fade-in-d10">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                    <line x1="12" y1="11" x2="12" y2="15" />
+                    <line x1="9" y1="14" x2="15" y2="14" />
+                </svg>
+                <h2>Ваши права и контроль над данными</h2>
+            </div>
+            <p>
+                <strong>Вы — владелец своих данных.</strong> Мы предоставляем вам полный контроль над тем, что и как используется. В настройках вы можете:
+                <ul>
+                    <li>В любой момент удалить свой аккаунт и все связанные данные (без возможности восстановления).</li>
+                    <li>Экспортировать всю историю сообщений в зашифрованном виде.</li>
+                    <li>Включить или отключить облачное резервное копирование.</li>
+                    <li>Управлять видимостью своего номера телефона и другой личной информации.</li>
+                    <li>Запросить отчёт о том, какие данные хранятся и как они используются.</li>
+                </ul>
+            </p>
+            <p>
+                Мы строго соблюдаем GDPR и аналогичные законы, и вы всегда можете обратиться к нашему специалисту по защите данных (DPO) с любыми вопросами. Ваша приватность — это ваше право, и мы защищаем его так же, как и свои собственные данные.
+            </p>
+        </div>
+
+        <!-- Заключение -->
+        <div class="privacy-section glass fade-in fade-in-d10" style="border-left: 3px solid var(--red);">
+            <div class="privacy-section-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <h2>Заключение</h2>
+            </div>
+            <p>
+                <strong>Noble — это не просто мессенджер, это движение за цифровую свободу.</strong> Мы стремимся создать пространство, где вы можете быть собой, не опасаясь слежки, анализа или манипуляций. Наша команда ежедневно работает над тем, чтобы ваши данные оставались в безопасности, а ваш опыт — комфортным и надёжным.
+            </p>
+            <p>
+                Мы приглашаем вас присоединиться к нашему сообществу и стать частью будущего, где приватность — это норма, а не исключение. Следите за новостями, задавайте вопросы и помогайте нам становиться лучше. Вместе мы сделаем интернет безопаснее для всех.
+            </p>
+            <p style="color: var(--red); font-weight: 500;">С уважением, команда Noble.</p>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer fade-in fade-in-d10">
+            <div class="logo-text-sm">Noble</div>
+            <p>Ваша конфиденциальность — наша миссия</p>
+            <div class="footer-links">
+                <a href="Privary.html">Приватность</a>
+                <a href="Danloawd.html">Скачать</a>
+                <a href="Max.html">Max</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p style="margin-top:16px; font-size:12px; color:var(--text-muted); opacity:0.5;">
+                &copy; 2026 Noble. Все права защищены.
+            </p>
+        </footer>
+
+    </div>
+    <!-- /container -->
+
+</body>
+</html>

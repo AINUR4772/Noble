@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noble — Вопросы и ответы</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE (полностью скопировано с лендинга) ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --dark: #111111;
+            --red: #e63946;
+            --red-dark: #b71c1c;
+            --red-glow: rgba(230, 57, 70, 0.6);
+            --red-glow-soft: rgba(230, 57, 70, 0.25);
+            --glass-bg: rgba(20, 20, 20, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --glass-shadow: rgba(0, 0, 0, 0.7);
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --text-muted: #777;
+            --radius-xl: 32px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== GRADIENT BACKGROUND ===== */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 20% 20%, rgba(180, 20, 30, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(200, 30, 40, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(150, 10, 20, 0.04) 0%, transparent 50%),
+                var(--black);
+            pointer-events: none;
+        }
+
+        /* ===== GLASS MIXIN ===== */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px) saturate(1.2);
+            -webkit-backdrop-filter: blur(18px) saturate(1.2);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 40px var(--glass-shadow);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HEADER (копия) ===== */
+        .header {
+            margin-top: 20px;
+            padding: 12px 24px;
+            border-radius: var(--radius-xl);
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px) saturate(1.2);
+            -webkit-backdrop-filter: blur(18px) saturate(1.2);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 40px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            transition: all var(--transition);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-img {
+            height: 44px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 0 12px var(--red-glow-soft));
+            transition: filter var(--transition);
+        }
+
+        .logo-img:hover {
+            filter: drop-shadow(0 0 24px var(--red-glow));
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 30%, #e63946 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .header-nav a {
+            font-size: 15px;
+            font-weight: 450;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: color var(--transition), text-shadow var(--transition);
+            position: relative;
+        }
+
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+
+        .header-nav a:hover {
+            color: #fff;
+        }
+
+        .header-nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-nav a.download-btn {
+            background: linear-gradient(135deg, var(--red-dark), var(--red));
+            color: #fff;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.25);
+        }
+
+        .header-nav a.download-btn::after {
+            display: none;
+        }
+
+        .header-nav a.download-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 32px rgba(230, 57, 70, 0.4);
+        }
+
+        /* ===== FAQ PAGE SPECIFIC ===== */
+        .faq-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            text-align: center;
+            margin: 40px 0 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-title .red {
+            color: var(--red);
+        }
+
+        .faq-sub {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            padding-bottom: 50px;
+        }
+
+        .faq-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px) saturate(1.2);
+            -webkit-backdrop-filter: blur(14px) saturate(1.2);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            box-shadow: 0 8px 32px var(--glass-shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: clamp(20px, 2.2vw, 28px);
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .faq-question svg {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            stroke: var(--red);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 10px var(--red-glow-soft));
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 17px;
+            line-height: 1.8;
+            padding-left: 48px; /* отступ под иконку */
+        }
+
+        .faq-answer p {
+            margin-bottom: 14px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer strong {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .faq-answer .highlight-red {
+            color: var(--red);
+            font-weight: 500;
+        }
+
+        /* ===== FOOTER (копия) ===== */
+        .footer {
+            padding: 40px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: center;
+        }
+
+        .footer .logo-text-sm {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 30%, #e63946 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .footer p {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .footer .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color var(--transition);
+        }
+
+        .footer .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 16px;
+                border-radius: var(--radius-lg);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .header-left {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .logo-img {
+                height: 36px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .header-nav {
+                justify-content: center;
+                gap: 16px;
+                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.04);
+            }
+
+            .header-nav a {
+                font-size: 14px;
+            }
+
+            .header-nav a.download-btn {
+                padding: 6px 18px;
+                font-size: 13px;
+            }
+
+            .faq-item {
+                padding: 20px 18px;
+            }
+
+            .faq-question {
+                font-size: 20px;
+                gap: 12px;
+            }
+
+            .faq-question svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .faq-answer {
+                padding-left: 0;
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .faq-title {
+                font-size: 28px;
+                margin-top: 30px;
+            }
+
+            .footer .logo-text-sm {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-nav {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .header-nav a {
+                font-size: 13px;
+            }
+
+            .header-nav a.download-btn {
+                padding: 5px 14px;
+                font-size: 12px;
+            }
+
+            .faq-question {
+                font-size: 18px;
+            }
+
+            .faq-answer {
+                font-size: 15px;
+            }
+
+            .footer .footer-links {
+                gap: 16px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.7s ease forwards;
+        }
+
+        .fade-in-d1 {
+            animation-delay: 0.1s;
+        }
+        .fade-in-d2 {
+            animation-delay: 0.2s;
+        }
+        .fade-in-d3 {
+            animation-delay: 0.3s;
+        }
+        .fade-in-d4 {
+            animation-delay: 0.4s;
+        }
+        .fade-in-d5 {
+            animation-delay: 0.5s;
+        }
+        .fade-in-d6 {
+            animation-delay: 0.6s;
+        }
+        .fade-in-d7 {
+            animation-delay: 0.7s;
+        }
+        .fade-in-d8 {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== BACKGROUND ===== -->
+    <div class="bg-gradient"></div>
+
+    <!-- ===== MAIN ===== -->
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header glass fade-in fade-in-d1">
+            <div class="header-left">
+                <a href="index.html" class="logo-wrapper">
+                    <img src="Logo.png" alt="Noble Logo" class="logo-img" />
+                    <span class="logo-text">Noble</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="Privary.html">Приватность</a>
+                <a href="Danloawd.html" class="download-btn">Скачать Приложение</a>
+            </nav>
+        </header>
+
+        <!-- ===== FAQ CONTENT ===== -->
+        <h1 class="faq-title fade-in fade-in-d2">
+            Часто задаваемые <span class="red">вопросы</span>
+        </h1>
+        <p class="faq-sub fade-in fade-in-d3">
+            Мы собрали самые важные ответы о проекте Noble. Если вы не нашли нужную информацию — свяжитесь с нами.
+        </p>
+
+        <div class="faq-list">
+
+            <!-- ===== ВОПРОС 1 ===== -->
+            <div class="faq-item glass fade-in fade-in-d4">
+                <div class="faq-question">
+                    <!-- Иконка календаря -->
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    Когда выйдет мессенджер?
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Официальный релиз Noble запланирован на <span class="highlight-red">2027 год</span>.</strong>
+                        Мы ориентируемся на период <span class="highlight-red">с февраля по май</span> — это приблизительная, но максимально реалистичная дата. Почему мы не называем точный день? Потому что для нас важнее выпустить стабильный и безопасный продукт, чем торопиться и разочаровать пользователей.
+                    </p>
+                    <p>
+                        В настоящий момент команда активно занимается <strong>закрытым бета-тестированием</strong>, в ходе которого мы выявляем и устраняем даже мельчайшие недочёты. Мы хотим, чтобы первый опыт использования Noble был безупречным: быстрая работа, надёжное шифрование и интуитивный интерфейс. Кроме того, мы проводим серию нагрузочных тестов, чтобы сервера выдерживали пиковые нагрузки с первых дней.
+                    </p>
+                    <p>
+                        Следите за нашими официальными каналами — мы обязательно объявим точную дату релиза за месяц до запуска. Ваше терпение будет вознаграждено по-настоящему качественным продуктом.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== ВОПРОС 2 ===== -->
+            <div class="faq-item glass fade-in fade-in-d5">
+                <div class="faq-question">
+                    <!-- Иконка замка -->
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    Что вы за шифрование будете использовать?
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Мы используем комплексный подход к шифрованию.</strong> Базовым стандартом является <span class="highlight-red">End‑to‑End (сквозное шифрование)</span> — все сообщения, файлы и медиа защищены на уровне устройства и расшифровываются только у получателя. Никто, включая нас, не имеет доступа к вашим данным.
+                    </p>
+                    <p>
+                        Но мы пошли дальше: в тестовом режиме внедряем собственную разработку <strong>Veltrix‑ETE</strong> — это гибридная схема, которая сочетает в себе <span class="highlight-red">MTProto</span> (протокол, используемый в Telegram) и наши уникальные алгоритмы. Мы модифицировали MTProto, добавив дополнительные слои защиты от атак типа «человек посередине» и улучшенное управление сессиями.
+                    </p>
+                    <p>
+                        Veltrix‑ETE также включает <strong>постквантовые компоненты</strong>, чтобы наши пользователи были защищены даже в эпоху квантовых компьютеров. В ближайшее время мы опубликуем технический документ (whitepaper) с полным описанием протокола — прозрачность для нас важна не меньше, чем безопасность.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== ВОПРОС 3 ===== -->
+            <div class="faq-item glass fade-in fade-in-d6">
+                <div class="faq-question">
+                    <!-- Иконка связи/сети -->
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M19.9 12a8 8 0 0 1-15.8 0" />
+                        <path d="M21 12a10 10 0 0 0-18 0" />
+                        <path d="M3 12h18" />
+                    </svg>
+                    Как с вашим приложением связан мессенджер Max?
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Мы создаём уникальную децентрализованную сеть, в которой Noble и Max являются равноправными узлами.</strong> Это значит, что вы можете общаться с пользователями Max, не устанавливая их приложение, и при этом <span class="highlight-red">полностью сохранять свою конфиденциальность</span>.
+                    </p>
+                    <p>
+                        Технически это реализовано через <strong>межпротокольный мост</strong>, который обеспечивает совместимость на уровне шифрования и маршрутизации. Все сообщения между Noble и Max проходят через защищённые туннели, а ваши данные никогда не покидают доверенную среду. Мы гарантируем, что ни Max, ни третьи лица не получат доступа к вашим метаданным или содержимому переписки.
+                    </p>
+                    <p>
+                        Такая архитектура позволяет нам объединить аудитории двух платформ, предоставляя пользователям свободу выбора без ущерба для безопасности. В будущем мы планируем добавить поддержку и других популярных мессенджеров, но только при условии полного соблюдения наших стандартов приватности.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== ВОПРОС 4 ===== -->
+            <div class="faq-item glass fade-in fade-in-d7">
+                <div class="faq-question">
+                    <!-- Иконка независимости (флаг) -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 21V3l4 2 4-2 4 2 4-2v14l-4 2-4-2-4 2-4-2z" />
+                        <path d="M4 9l4 2 4-2 4 2 4-2" />
+                        <path d="M4 15l4 2 4-2 4 2 4-2" />
+                    </svg>
+                    Вы связаны с ВК или Яндексом?
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Нет, мы не связаны ни с одной из этих компаний.</strong> Noble — это <span class="highlight-red">полностью независимый проект</span>, который не входит в экосистемы VK, Яндекс или любые другие корпорации. Мы не получаем от них финансирования, не используем их инфраструктуру и не передаём им никаких данных.
+                    </p>
+                    <p>
+                        Наша команда состоит из энтузиастов, которые верят в открытость, свободу общения и неприкосновенность личной жизни. Мы сознательно отказались от партнёрств с крупными игроками, чтобы сохранить полный контроль над продуктом и не подчиняться внешним интересам. Все серверы Noble принадлежат нам и расположены в юрисдикциях с надёжной защитой данных.
+                    </p>
+                    <p>
+                        Мы гордимся своей независимостью и намерены развивать проект исключительно на основе потребностей наших пользователей, а не корпоративных целей.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== ВОПРОС 5 ===== -->
+            <div class="faq-item glass fade-in fade-in-d8">
+                <div class="faq-question">
+                    <!-- Иконка кошелька/звезды -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        <polyline points="12 2 12 17.77 6.18 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    Будут ли у вас платные подписки или звёзды?
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Мы пока находимся на стадии обсуждения моделей монетизации.</strong> Наша главная цель — сохранить баланс между бесплатным доступом для всех и устойчивым развитием проекта. Мы не хотим вводить привычные «звёзды» или подписки, которые ограничивают функциональность.
+                    </p>
+                    <p>
+                        Скорее всего, мы предложим <span class="highlight-red">нечто необычное</span>: например, добровольные пожертвования с получением эксклюзивных значков или персонализированных тем оформления. Также рассматриваем вариант «премиум‑настроек» для корпоративных пользователей (расширенная аналитика, интеграция с CRM), но базовые функции — обмен сообщениями, звонки, файлы — всегда останутся бесплатными.
+                    </p>
+                    <p>
+                        Мы также изучаем возможность создания внутренней валюты, которую можно заработать за активное участие в жизни сообщества (например, за помощь в поиске багов или переводы). Главное — чтобы монетизация не нарушала приватность и не вводила скрытых платных стен. Окончательное решение мы примем после сбора обратной связи от первых пользователей.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer fade-in fade-in-d8">
+            <div class="logo-text-sm">Noble</div>
+            <p>Ваша конфиденциальность — наша миссия</p>
+            <div class="footer-links">
+                <a href="Privary.html">Приватность</a>
+                <a href="Danloawd.html">Скачать</a>
+                <a href="Max.html">Max</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p style="margin-top:16px; font-size:12px; color:var(--text-muted); opacity:0.5;">
+                &copy; 2026 Noble. Все права защищены.
+            </p>
+        </footer>
+
+    </div>
+    <!-- /container -->
+
+</body>
+</html>
