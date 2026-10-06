@@ -1,0 +1,8 @@
+# Noble Launcher - индексация разрешена (Google и Яндекс)
+User-agent: *
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+Sitemap: https://ainur4772.github.io/Noble/sitemap.xml
