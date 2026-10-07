@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ainur4772.github.io/Noble/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ainur4772.github.io/Noble/index.html?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainur4772.github.io/Noble/index.html?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainur4772.github.io/Noble/index.html"/>
+    <loc>https://noblelauncher.ru/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://noblelauncher.ru/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ainur4772.github.io/Noble/features.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ainur4772.github.io/Noble/features.html?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainur4772.github.io/Noble/features.html?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainur4772.github.io/Noble/features.html"/>
+    <loc>https://noblelauncher.ru/features.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/features.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://noblelauncher.ru/features.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/features.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ainur4772.github.io/Noble/download.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ainur4772.github.io/Noble/download.html?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainur4772.github.io/Noble/download.html?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainur4772.github.io/Noble/download.html"/>
+    <loc>https://noblelauncher.ru/download.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/download.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://noblelauncher.ru/download.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/download.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ainur4772.github.io/Noble/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ainur4772.github.io/Noble/about.html?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainur4772.github.io/Noble/about.html?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainur4772.github.io/Noble/about.html"/>
+    <loc>https://noblelauncher.ru/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/about.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://noblelauncher.ru/about.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/about.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ainur4772.github.io/Noble/faq.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ainur4772.github.io/Noble/faq.html?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ainur4772.github.io/Noble/faq.html?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ainur4772.github.io/Noble/faq.html"/>
+    <loc>https://noblelauncher.ru/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/faq.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://noblelauncher.ru/faq.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/faq.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://noblelauncher.ru/why-closed-source.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/why-closed-source.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://noblelauncher.ru/why-closed-source.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/why-closed-source.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

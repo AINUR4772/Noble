@@ -5,4 +5,4 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-Sitemap: https://ainur4772.github.io/Noble/sitemap.xml
+Sitemap: https://noblelauncher.ru/sitemap.xml

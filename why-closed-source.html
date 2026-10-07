@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n-meta="meta_title">О лаунчере — Noble Launcher, бесплатный лаунчер Minecraft на ПК</title>
-  <meta name="description" content="О Noble Launcher: зачем нужен бесплатный и удобный лаунчер на ПК, какие принципы заложены (без Microsoft, обратимость, данные у вас) и что нового в версии 2.8.0." data-i18n-meta="meta_description">
+  <title data-i18n-meta="meta_title">Почему мы не публикуем исходный код — Noble Launcher</title>
+  <meta name="description" content="Почему Noble Launcher не публикует исходный код: защита от подделок, наша ответственность и проверка безопасности через VirusTotal." data-i18n-meta="meta_description">
   
   <meta name="author" content="Noble Launcher">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://noblelauncher.ru/about.html">
-  <link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/about.html?lang=ru">
-  <link rel="alternate" hreflang="en" href="https://noblelauncher.ru/about.html?lang=en">
-  <link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/about.html">
+  <link rel="canonical" href="https://noblelauncher.ru/why-closed-source.html">
+  <link rel="alternate" hreflang="ru" href="https://noblelauncher.ru/why-closed-source.html?lang=ru">
+  <link rel="alternate" hreflang="en" href="https://noblelauncher.ru/why-closed-source.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://noblelauncher.ru/why-closed-source.html">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Noble Launcher">
-  <meta property="og:url" content="https://noblelauncher.ru/about.html">
+  <meta property="og:url" content="https://noblelauncher.ru/why-closed-source.html">
   <meta property="og:title" content="О Noble Launcher" data-i18n-meta="og_title">
   <meta property="og:description" content="Независимый бесплатный лаунчер Minecraft: без Microsoft-регистрации, с обратимыми настройками и данными на вашем диске." data-i18n-meta="og_description">
   <meta property="og:image" content="https://noblelauncher.ru/assets/screenshots/main-ru.png">
@@ -460,124 +460,45 @@
   </header>
 
   <main id="main">
-
     <section class="hero" style="padding: 52px 0 20px;">
       <div class="wrap">
-        <p class="eyebrow reveal" data-i18n="nav_about">О лаунчере</p>
-        <h1 class="reveal" style="--d:.06s; font-size: clamp(30px, 4.4vw, 44px);" data-i18n="h1">Зачем нужен Noble Launcher</h1>
-        <p class="lead reveal" style="--d:.12s" data-i18n="lead">Небольшой бесплатный лаунчер, который делает игру ближе: без лишних аккаунтов, без навязанных настроек и без «чёрных ящиков».</p>
+        <p class="eyebrow reveal">Noble Launcher</p>
+        <h1 class="reveal" style="--d:.06s; font-size: clamp(30px, 4.4vw, 44px);" data-i18n="why_h1">Почему мы не публикуем исходный код</h1>
+        <p class="lead reveal" style="--d:.12s" data-i18n="why_lead">Короткий и честный ответ: так безопаснее для обычных игроков.</p>
       </div>
     </section>
 
-    <section class="block" style="padding-top: 28px;">
+    <section class="block" style="padding-top: 26px;">
       <div class="wrap">
-        <div class="cards two" id="aboutCards"></div>
-      </div>
-    </section>
-
-    <section class="block" style="padding-top: 0;">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow" data-i18n="how_e">Как устроено</p>
-          <h2 data-i18n="how_h2">Коротко и честно</h2>
-        </div>
-        <ul class="ticks reveal" id="howList"></ul>
-      </div>
-    </section>
-
-    <section class="block" style="padding-top: 0;">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow" data-i18n="new_eyebrow">Версия 2.8.0</p>
-          <h2 data-i18n="new_h2">Что нового</h2>
-          <p style="color: var(--ink2); margin-top: 6px;" data-i18n="new_note">Новое в 2.8.0 — и то, что появилось в 2.6.x:</p>
-        </div>
-        <ul class="tick-grid reveal" id="newsList"></ul>
-      </div>
-    </section>
-
-    <section class="block">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow" data-i18n="new28_eyebrow">Версия 2.8.0</p>
-          <h2 data-i18n="new28_h2">Что нового в 2.8.0</h2>
-          <p data-i18n="new28_text">Друзья через Steam, кураторские сборки, профиль с достижениями и оптимизация памяти.</p>
-        </div>
-
-        <div class="cards">
+        <div class="cards two">
           <article class="card reveal">
-            <h3 data-i18n="new28_friends_t">Друзья через Steam (Beta)</h3>
-            <p data-i18n="new28_friends_d">Играйте с друзьями по P2P без проброса портов.</p>
+            <div class="card-icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8 2.6 4.4v4c0 3.2 2.2 5.4 5.4 5.8 3.2-.4 5.4-2.6 5.4-5.8v-4z"/><path d="M6.2 8h3.6"/></svg></div>
+            <h3 data-i18n="why_s1_t">Злоумышленники могут добавить вирусы и собрать свою версию</h3>
+            <p data-i18n="why_s1_d">Если выложить код, любой сможет вставить в него вредоносные файлы и выпустить поддельный Noble Launcher.</p>
           </article>
-          <article class="card reveal" style="--d:.05s">
-            <h3 data-i18n="new28_noble_t">Сборки от Noble (Beta)</h3>
-            <p data-i18n="new28_noble_d">Готовые кураторские сборки с установкой в один клик.</p>
+          <article class="card reveal" style="--d:.06s">
+            <div class="card-icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 7.6a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"/><path d="M2.8 13.8c.7-2.5 2.9-3.8 5.2-3.8s4.5 1.3 5.2 3.8"/></svg></div>
+            <h3 data-i18n="why_s2_t">Это наша работа и наша ответственность</h3>
+            <p data-i18n="why_s2_d">Мы очень стараемся над лаунчером: это наш проект, наше время и наша ответственность за результат.</p>
           </article>
-          <article class="card reveal" style="--d:.1s">
-            <h3 data-i18n="new28_profile_t">Профиль и достижения</h3>
-            <p data-i18n="new28_profile_d">Смена скина, 62 достижения и время в игре.</p>
-          </article>
-          <article class="card reveal" style="--d:.15s">
-            <h3 data-i18n="new28_memory_t">Оптимизация памяти</h3>
-            <p data-i18n="new28_memory_d">Ленивые экраны и окно журнала в консоли.</p>
-          </article>
-        </div>
-
-        <div class="shots" style="margin-top: 16px;">
-          <figure class="shot shot-frame reveal">
-            <div class="shot-bar"><i></i><i></i><i></i><span data-i18n="shot_profile_k">Достижения, скин и время</span></div>
-            <img src="assets/screenshots/profile.png" alt="Профиль Noble Launcher: уровень, очки и смена скина" width="1264" height="761" loading="lazy" data-i18n-alt="shot_profile_alt">
-            <figcaption><span data-i18n="shot_profile_t">Мой профиль</span> <span data-i18n="shot_profile_k">Достижения, скин и время</span></figcaption>
-          </figure>
-          <figure class="shot shot-frame reveal" style="--d:.08s">
-            <div class="shot-bar"><i></i><i></i><i></i><span data-i18n="shot_achievements_k">62 достижения и уровни</span></div>
-            <img src="assets/screenshots/achievements.png" alt="Сетка достижений Noble Launcher с уровнями" width="1264" height="761" loading="lazy" data-i18n-alt="shot_achievements_alt">
-            <figcaption><span data-i18n="shot_achievements_t">Достижения</span> <span data-i18n="shot_achievements_k">62 достижения и уровни</span></figcaption>
-          </figure>
-          <figure class="shot shot-frame reveal" style="--d:.16s">
-            <div class="shot-bar"><i></i><i></i><i></i><span data-i18n="shot_builds-noble_k">Кураторские сборки (Beta)</span></div>
-            <img src="assets/screenshots/builds-noble.png" alt="Раздел кураторских сборок Noble с карточками" width="1264" height="761" loading="lazy" data-i18n-alt="shot_builds-noble_alt">
-            <figcaption><span data-i18n="shot_builds-noble_t">Сборки от Noble</span> <span data-i18n="shot_builds-noble_k">Кураторские сборки (Beta)</span></figcaption>
-          </figure>
-          <figure class="shot shot-frame reveal" style="--d:.24s">
-            <div class="shot-bar"><i></i><i></i><i></i><span data-i18n="shot_friends_k">e4steam и статус Steam</span></div>
-            <img src="assets/screenshots/friends.png" alt="Настройка друзей через Steam в Noble Launcher" width="1264" height="761" loading="lazy" data-i18n-alt="shot_friends_alt">
-            <figcaption><span data-i18n="shot_friends_t">Друзья через Steam (Beta)</span> <span data-i18n="shot_friends_k">e4steam и статус Steam</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="block" style="padding-top: 0;">
-      <div class="wrap">
-        <div class="notice reveal" data-i18n="disclaimer">Noble Launcher — независимый проект…</div>
-        <div style="margin-top: 26px;">
-
-        <div class="cta-panel reveal">
-          <div class="cta-grid">
-            <div>
-              <p class="eyebrow" data-i18n="nav_download">Скачать</p>
-              <h2 style="font-size: clamp(24px, 3vw, 32px);" data-i18n="cta_ready">Установите и играйте</h2>
-              <p style="color: var(--ink2); margin-bottom: 22px;" data-i18n="cta_ready_text">Установщик сам создаст ярлык «NobleLauncher», а папку установки можно выбрать на любом диске.</p>
-              <div class="hero-actions" style="margin-bottom: 0;">
-                <a class="btn btn-red btn-lg" href="https://github.com/AINUR4772/Noble/releases/download/v2.8.0/NobleLauncherSetup-2.8.0.exe">
-                  <svg viewBox="0 0 16 16" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round"><path d="M8 2.6v7.2"/><path d="M4.9 6.9 8 10l3.1-3.1"/><path d="M3 13.2h10"/></svg>
-                  <span>Noble Launcher 2.8.0</span>
-                </a>
-                <a class="btn btn-ghost" href="download.html" data-i18n="download_more">Инструкция по установке</a>
-              </div>
+          <article class="card reveal" style="--d:.12s">
+            <div class="card-icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 4.6a6 6 0 1 0 1.2 3.4"/><path d="M14.4 3v3.4h-3.4"/></svg></div>
+            <h3 data-i18n="why_s3_t">Любой может проверить нас на VirusTotal</h3>
+            <p data-i18n="why_s3_d">Загрузите установщик на VirusTotal и сверьте SHA-256 со страницей «Скачать».</p>
+            <div class="hero-actions" style="margin-top: 12px;">
+              <a class="btn btn-red btn-sm" href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="why_button">Проверить на VirusTotal</span>
+              </a>
             </div>
-            <ol class="steps">
-              <li><span class="step-num">1</span><span><b data-i18n="step1_t">Скачайте установщик.</b> <span data-i18n="step1_d">Windows может показать предупреждение SmartScreen — «Подробнее» → «Выполнить в любом случае».</span></span></li>
-              <li><span class="step-num">2</span><span><b data-i18n="step2_t">Выберите диск.</b> <span data-i18n="step2_d">На странице каталога укажите любую папку — например, D:\NobleLauncher.</span></span></li>
-              <li><span class="step-num">3</span><span><b data-i18n="step3_t">Играйте.</b> <span data-i18n="step3_d">Выберите аккаунт Ely.by или офлайн-ник и запускайте сборку.</span></span></li>
-            </ol>
-          </div>
+          </article>
         </div>
+
+        <div class="notice reveal" style="margin-top: 22px;">
+          <span data-i18n="why_official">Официальные источники: GitHub Releases · Telegram @noblelauncher</span>
         </div>
       </div>
     </section>
-  </main>
+</main>
 
   <footer class="site-footer">
     <div class="wrap">
@@ -604,7 +525,6 @@
           <ul class="footer-links">
             <li><a href="https://t.me/noblelauncher" target="_blank" rel="noopener noreferrer" data-i18n="tg_follow">Подписаться на @noblelauncher</a></li>
             <li><a href="download.html" data-i18n="footer_download">Установить лаунчер</a></li>
-            <li><a href="why-closed-source.html" data-i18n="why_link">Почему без исходного кода?</a></li>
           </ul>
         </div>
       </div>
@@ -621,6 +541,16 @@
        Язык: ?lang= в адресе → localStorage → navigator.languages → ru. */
     var I18N = {
       ru: {
+            "why_h1": "Почему мы не публикуем исходный код",
+            "why_lead": "Короткий и честный ответ: так безопаснее для обычных игроков. Сборку всё равно можно проверить — без чтения кода.",
+            "why_s1_t": "Злоумышленники могут добавить вирусы и собрать свою версию",
+            "why_s1_d": "Если выложить код, любой сможет вставить в него вредоносные файлы, собрать «свой Noble Launcher» и выдать его за наш. Пострадают обычные пользователи, которые скачают такую сборку. Поэтому мы не публикуем исходники.",
+            "why_s2_t": "Это наша работа и наша ответственность",
+            "why_s2_d": "Мы очень стараемся над лаунчером: это наш проект, наше время и наша ответственность за результат. Код — не то, чем мы хотим делиться с кем-либо.",
+            "why_s3_t": "Любой может проверить нас на VirusTotal",
+            "why_s3_d": "Безопасность проверяется и без исходного кода: загрузите установщик на VirusTotal и убедитесь, что антивирусы не находят угроз. Сверяйте SHA-256 со страницей «Скачать» и берите файл только из официальных источников — GitHub Releases и Telegram-канала.",
+            "why_button": "Проверить на VirusTotal",
+            "why_official": "Официальные источники: GitHub Releases · Telegram @noblelauncher",
             "why_link": "Почему без исходного кода?",
             "new28_eyebrow": "Версия 2.8.0",
             "new28_h2": "Что нового в 2.8.0",
@@ -731,6 +661,16 @@
             "how_e": "Как устроено"
       },
       en: {
+            "why_h1": "Why we do not publish the source code",
+            "why_lead": "The short and honest answer: it is safer for regular players. The build can still be verified — without reading the code.",
+            "why_s1_t": "Malicious actors could add viruses and ship their own version",
+            "why_s1_d": "If the code were public, anyone could inject malware, build a fake “Noble Launcher” and pass it off as ours. Regular users who download such a build would be hurt. That is why the source stays closed.",
+            "why_s2_t": "This is our work and our responsibility",
+            "why_s2_d": "We put a lot of effort into the launcher: it is our project, our time and our responsibility for the result. The code is not something we want to hand over to anyone.",
+            "why_s3_t": "Anyone can check us on VirusTotal",
+            "why_s3_d": "Security can be verified without the source: upload the installer to VirusTotal and confirm no antivirus flags it. Compare the SHA-256 with the Download page and get the file only from official sources — GitHub Releases and the Telegram channel.",
+            "why_button": "Check on VirusTotal",
+            "why_official": "Official sources: GitHub Releases · Telegram @noblelauncher",
             "why_link": "Why no source code?",
             "new28_eyebrow": "Version 2.8.0",
             "new28_h2": "What is new in 2.8.0",
